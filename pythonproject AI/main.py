@@ -115,11 +115,12 @@ class MCTSNode:
 
         while get_valid_moves(current_board, current_player):
             valid_moves = get_valid_moves(current_board, current_player)
-            # Heuristic-guided rollout: prefer moves with higher positional weights
-            best_move = max(valid_moves, key=lambda move: self.evaluate_board_after_move(current_board, move, current_player))
-            make_move(current_board, best_move[0], best_move[1], current_player)
+            random_move = random.choice(valid_moves)
+            make_move(current_board, random_move[0], random_move[1], current_player)
+
             current_player = 'B' if current_player == 'W' else 'W'
 
+        # קביעת תוצאת הסימולציה: מי זכה יותר
         return 1 if sum(row.count('B') for row in current_board) > sum(row.count('W') for row in current_board) else 0
 
     def evaluate_board_after_move(self, board, move, player):
