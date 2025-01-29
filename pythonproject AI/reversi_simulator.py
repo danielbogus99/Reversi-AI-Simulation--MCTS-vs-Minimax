@@ -173,7 +173,7 @@ minimax_player = 'B' if mcts_player == 'W' else 'W'
 mcts_wins = 0
 minimax_wins = 0
 
-minimax_ai = Minimax(depth=3)  # Increased depth for better performance
+minimax_ai = Minimax(depth=2)  # Increased depth for better performance
 
 for game in range(num_games):
     print(f"\nStarting Game {game + 1}...")
